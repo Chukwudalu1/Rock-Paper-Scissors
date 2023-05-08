@@ -19,11 +19,25 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection){ 
         console.log('Draw! It is a tie');
     }if((playerSelection == 'Scissors' && computerSelection == 'Paper')|| (playerSelection == 'Paper' && computerSelection == 'Rock')|| (playerSelection == 'Rock' && computerSelection == 'Scissors')){ 
+        playerScore++;
         return console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-    }else {
+    }if ((computerSelection == 'Scissors' && playerSelection == 'Paper')|| (computerSelection == 'Paper' && playerSelection == 'Rock')|| (computerSelection == 'Rock' && playerSelection == 'Scissors')){
+        computerScore++;
         return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
     }
 
 }
 const playerSelection = prompt('Rock, Paper or Scissor?: ');
 console.log(playRound(playerSelection, computerSelection()));
+
+function game() {
+    for (let i = 0; i <=5; i++) {
+        return playRound;   
+    }
+    if (playerScore > computerScore) {
+        console.log('You win! The game is over');
+    } else {
+        console.log('Game over, You Lose!');
+    }
+}
+game();
