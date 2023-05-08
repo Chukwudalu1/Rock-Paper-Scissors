@@ -25,14 +25,14 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
     }
-
+    console.log(`${playerScore} ${computerScore}`);
 }
-const playerSelection = prompt('Rock, Paper or Scissor?: ');
+const playerSelection = prompt('Rock, Paper or Scissor?: '); //
 console.log(playRound(playerSelection, computerSelection()));
 
 function game() {
     for (let i = 0; i <=5; i++) {
-        return playRound;   
+        return playRound();   
     }
     if (playerScore > computerScore) {
         console.log('You win! The game is over');
@@ -40,4 +40,6 @@ function game() {
         console.log('Game over, You Lose!');
     }
 }
-game();
+//const playerSelection = prompt('Rock, Paper or Scissor?: '); //
+//console.log(game());//(playRound(playerSelection, computerSelection()));
+//game();
