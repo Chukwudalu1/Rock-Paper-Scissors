@@ -60,12 +60,13 @@ function playRound(playerSelection, computerSelection){
 function game() {
     let playerScore =0;
     let computerScore = 0;
-    console.log("Welcome!")
-    for (let i = 0; i <5; i++) {
+    console.log("Welcome to the game, lets Play!")
+    for (let i = 1; i <6; i++) {
+        console.log("Round", i,"- Make your pick: Rock, Paper, Scissors:");
         const playerSelection = "Scissors"//prompt("Please select: Rock, Paper, or Scissors: ");
         const computerSelection = getcomputerChoice();
         console.log(playRound(playerSelection, computerSelection));
-       // console.log("next round");
+
         if (Winner(playerSelection, computerSelection) == "Player") {
             playerScore++; //
         }
