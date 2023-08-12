@@ -1,9 +1,7 @@
-let computerScore = 0;
-let playerScore = 0;
-
-const computerSelection = function (){
+//Function to allow computer play
+const getcomputerChoice = function (){
     const choice = Math.floor(Math.random()*3);
-    let result = '';
+    //let result = '';
     switch (choice) {
         case 0:
             return 'Rock';
@@ -15,31 +13,86 @@ const computerSelection = function (){
 }
 //computerSelection();
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection){ 
-        console.log('Draw! It is a tie');
-    }if((playerSelection == 'Scissors' && computerSelection == 'Paper')|| (playerSelection == 'Paper' && computerSelection == 'Rock')|| (playerSelection == 'Rock' && computerSelection == 'Scissors')){ 
-        playerScore++;
-        return console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-    }if ((computerSelection == 'Scissors' && playerSelection == 'Paper')|| (computerSelection == 'Paper' && playerSelection == 'Rock')|| (computerSelection == 'Rock' && playerSelection == 'Scissors')){
-        computerScore++;
-        return console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+function Winner(playerSelection, computerSelection){
+    if (playerSelection === computerSelection){
+        return "It is a Tie"
     }
-    console.log(`${playerScore} ${computerScore}`);
+    else if(
+        (playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors")||
+        (playerSelection.toLowerCase() === "scissors" && computerSelection === "Paper")||
+        (playerSelection.toLowerCase() === "paper" && computerSelection==="Rock")
+    ){
+        return "Player"
+    }
+    else{
+        return "Computer"
+    }
 }
-const playerSelection = prompt('Rock, Paper or Scissor?: '); //
-console.log(playRound(playerSelection, computerSelection()));
+function playRound(playerSelection, computerSelection){
+    const resultChecker = Winner(playerSelection, computerSelection);
+    if (resultChecker == "It is a Tie") {
+        return "Tie";
+    }
+    else if (resultChecker == "Player"){
+        return `You win! ${playerSelection} beats ${computerSelection}`
+    }
+    else{
+        return `You lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
+
+/* function getPlayerChoice(){
+    let Input = false;
+    while (Input == false) {
+        const playerChoice = prompt("Rock, Paper, or Scissors");
+        if (playerChoice == null) 
+            continue;{
+        }
+        const choiceLower = playerChoice.toLowerCase();
+        if (choice.includes(choiceLower)){
+            Input = true;
+            return choiceLower;
+        }
+    }
+ }
+*/
 
 function game() {
-    for (let i = 0; i <=5; i++) {
-        return playRound();   
+    let playerScore =0;
+    let computerScore = 0;
+    console.log("Welcome!")
+    for (let i = 0; i <5; i++) {
+        const playerSelection = "Scissors"//prompt("Please select: Rock, Paper, or Scissors: ");
+        const computerSelection = getcomputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+       // console.log("next round");
+        if (Winner(playerSelection, computerSelection) == "Player") {
+            playerScore++; //
+        }
+        else if (Winner(playerSelection, computerSelection) == "Computer") {
+            computerScore++; 
+        }
     }
-    if (playerScore > computerScore) {
-        console.log('You win! The game is over');
-    } else {
-        console.log('Game over, You Lose!');
+    if (playerScore > computerScore) {   
+        console.log("Player Wins");
     }
+    else if (computerScore > playerScore) {
+        console.log("Computer Wins");
+    }
+    else{
+        console.log("It was a Tie");
+    }
+    console.log(`The end of the game........Player score: ${playerScore} Computer Score: ${computerScore}`);
 }
-//const playerSelection = prompt('Rock, Paper or Scissor?: '); //
-//console.log(game());//(playRound(playerSelection, computerSelection()));
-//game();
+game();
+
+
+
+/*const prompts = document.getElementById("Prompt Message")
+const rockBtn = document.getElementById("rockBtn");
+const paperBtn = document.getElementById("paperBtn");
+const scissorsBtn = document.getElementById("scissorsBtn");
+
+rockBtn.addEventListener("click", () => {console.log("Rock")});
+paperBtn.addEventListener("click", () => {console.log("Paper")});
+scissorsBtn.addEventListener("click", () => {console.log("Scissors")});*/
